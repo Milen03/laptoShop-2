@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="bg">
-<head>
-    <meta charset="UTF-8">
-    <title>Табло</title>
-    @vite('resources/css/app.css')
-</head>
+@extends('layouts.app')
+
+@section('content')
 <body class="bg-gray-100 flex items-center justify-center min-h-screen">
     <div class="bg-white shadow-lg rounded-2xl p-8 text-center">
         <h1 class="text-2xl font-bold mb-4">Добре дошъл, {{ auth()->user()->name }}!</h1>
@@ -17,4 +13,4 @@
         </form>
     </div>
 </body>
-</html>
+@endsection
