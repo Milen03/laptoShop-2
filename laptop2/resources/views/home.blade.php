@@ -1,23 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
-<body class="bg-gray-100 flex items-center justify-center min-h-screen">
-    <section class="hero-section bg-gradient-primary text-black py-5">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-6">
-                <h1 class="display-4 fw-bold mb-4">Намери перфектния лаптоп за теб</h1>
-                <p class="lead mb-4">Най-големият избор от качествени лаптопи на най-добри цени. Бърза доставка и гаранция.</p>
-                <a href="{{ route('laptops') }}" class="btn btn-light btn-lg me-3">
-                    <i class="fas fa-shopping-bag me-2"></i>Разгледай продукти
-                </a>
-                <a href="#featured" class="btn btn-outline-light btn-lg">
-                    <i class="fas fa-star me-2"></i>Препоръчани
-                </a>
-            </div>
-            
+<div class="min-h-screen flex flex-col">
+<!-- Hero Section -->
+    <section class="flex-grow flex items-center justify-center bg-gradient-to-r from-indigo-50 to-white">
+        <div class="text-center max-w-2xl px-6">
+            <h1 class="text-5xl font-extrabold text-gray-900 mb-6">
+                Намери <span class="text-indigo-600">перфектния лаптоп</span> за теб
+            </h1>
+            <p class="text-lg text-gray-600 mb-8">
+                Огромен избор от качествени лаптопи на най-добри цени. Бърза доставка и гаранция.
+            </p>
+            <a href="{{ route('laptops') }}"
+               class="bg-indigo-600 text-white px-8 py-4 rounded-lg text-lg font-semibold shadow hover:bg-indigo-700 transition">
+                <i class="fas fa-shopping-bag mr-2"></i> Разгледай продукти
+            </a>
         </div>
-    </div>
-</section>
-</body>
+    </section>
+</div>
 @endsection

@@ -1,57 +1,90 @@
+<!-- filepath: resources/views/layouts/navigation.blade.php -->
+<nav class="bg-white border-b border-gray-200 shadow">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-    <div class="container-fluid">
-        <!-- Logo -->
-        <a class="navbar-brand" href="{{ route('home') }}">
-            <h1 class="h4 mb-0 fw-bold">Laptop Shop</h1>
-        </a>
+            <!-- Logo -->
+            <div class="flex items-center">
+                <a href="{{ route('home') }}" class="flex items-center text-xl font-bold text-indigo-600">
+                    <i class="fas fa-laptop mr-2"></i> Laptop Shop
+                </a>
+            </div>
 
-        <!-- Mobile toggle button -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <!-- Navigation content -->
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <!-- Navigation Links -->
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a href="{{ route('home') }}" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item">
-                   <a href="{{ route('laptops') }}" class="nav-link">Laptops</a>
-                </li>
-            </ul>
-
-            <!-- Authentication -->
-            <ul class="navbar-nav">
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="{{ route('home') }}" class="text-gray-700 hover:text-indigo-600 flex items-center">
+                    <i class="fas fa-home mr-1"></i> Начало
+                </a>
+                <a href="{{ route('laptops') }}" class="text-gray-700 hover:text-indigo-600 flex items-center">
+                    <i class="fas fa-laptop mr-1"></i> Лаптопи
+                </a>
+                <a href="{{ url('/admin') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">
+                    <i class="fas fa-cogs mr-2"></i> Admin
+                </a>
                 @auth
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            {{ Auth::user()->name }}
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <li>
-                                <a href="{{ url('/dashboard') }}" class="dropdown-item">Dashboard</a>
-                            </li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li>
-                                <form method="POST" action="{{ route('logout') }}" class="d-inline">
-                                    @csrf
-                                    <button type="submit" class="dropdown-item">Logout</button>
-                                </form>
-                            </li>
-                        </ul>
-                    </li>
+
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100">
+                        <i class="fas fa-sign-out-alt mr-2"></i> Изход
+                    </button>
+                </form>
                 @else
-                    <li class="nav-item">
-                        <a href="{{ route('login') }}" class="nav-link">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('register') }}" class="nav-link">Register</a>
-                    </li>
+                <a href="{{ route('login') }}" class="text-gray-700 hover:text-indigo-600 flex items-center">
+                    <i class="fas fa-sign-in-alt mr-1"></i> Вход
+                </a>
+                <a href="{{ route('register') }}" class="ml-3 px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 flex items-center">
+                    <i class="fas fa-user-plus mr-1"></i> Регистрация
+                </a>
                 @endauth
-            </ul>
+                <i class="fas fa-user-circle mr-1 ml-3 px-2 py-2 items-center" ></i> {{ Auth::user()->name }}
+
+            </div>
+
+            <!-- Mobile menu button -->
+            <div class="md:hidden flex items-center">
+                <button id="mobile-menu-button" class="text-gray-700 focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
         </div>
     </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden px-4 pb-3 space-y-2 bg-white border-t">
+        <a href="{{ route('home') }}" class="block text-gray-700 hover:text-indigo-600">
+            <i class="fas fa-home mr-1"></i> Начало
+        </a>
+        <a href="{{ route('laptops') }}" class="block text-gray-700 hover:text-indigo-600">
+            <i class="fas fa-laptop mr-1"></i> Лаптопи
+        </a>
+        @auth
+        <a href="{{ url('/dashboard') }}" class="block text-gray-700 hover:text-indigo-600">
+            <i class="fas fa-tachometer-alt mr-1"></i> Dashboard
+        </a>
+        <a href="{{ url('/admin') }}" class="block text-gray-700 hover:text-indigo-600">
+            <i class="fas fa-cogs mr-1"></i> Admin
+        </a>
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <button type="submit" class="w-full text-left text-gray-700 hover:text-indigo-600">
+                <i class="fas fa-sign-out-alt mr-1"></i> Изход
+            </button>
+        </form>
+        @else
+        <a href="{{ route('login') }}" class="block text-gray-700 hover:text-indigo-600">
+            <i class="fas fa-sign-in-alt mr-1"></i> Вход
+        </a>
+        <a href="{{ route('register') }}" class="block px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700">
+            <i class="fas fa-user-plus mr-1"></i> Регистрация
+        </a>
+        @endauth
+    </div>
 </nav>
+
+<!-- Script for mobile menu toggle -->
+<script>
+    document.getElementById("mobile-menu-button").addEventListener("click", function() {
+        document.getElementById("mobile-menu").classList.toggle("hidden");
+    });
+</script>
