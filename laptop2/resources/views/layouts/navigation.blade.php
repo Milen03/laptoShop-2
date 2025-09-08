@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
     <div class="container-fluid">
         <!-- Logo -->
-        <a class="navbar-brand" href="{{ url('/') }}">
+        <a class="navbar-brand" href="{{ route('home') }}">
             <h1 class="h4 mb-0 fw-bold">Laptop Shop</h1>
         </a>
 
@@ -16,10 +16,10 @@
             <!-- Navigation Links -->
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a href="{{ url('/') }}" class="nav-link">Home</a>
+                    <a href="{{ route('home') }}" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url('/laptop') }}" class="nav-link">Laptops</a>
+                   <a href="{{ route('laptops') }}" class="nav-link">Laptops</a>
                 </li>
             </ul>
 
