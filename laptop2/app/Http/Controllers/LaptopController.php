@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Storage;
 
 use App\Models\Laptop;
 
+use App\Models\User;
+
+use Illuminate\Support\Facades\Auth;
+
 class LaptopController extends Controller
 {
     public function index(){
@@ -43,7 +47,8 @@ class LaptopController extends Controller
             $validated['image'] = $request->file('image')->store('laptops', 'public');
         }
 
-        $validated['in_stock'] = $request->has('in_stock');
+
+      $validated['user_id'] = Auth::id();
 
         Laptop::create($validated);
 
@@ -104,7 +109,7 @@ class LaptopController extends Controller
 
         $laptop->delete();
 
-        return redirect()->route('laptops.index')
+        return redirect()->route('laptops')
                         ->with('success', 'Лаптопът е изтрит успешно!');
     }
 

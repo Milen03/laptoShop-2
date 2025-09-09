@@ -17,6 +17,7 @@ class Laptop extends Model
         'price',
         'image',
         'description',
+        'user_id',
     ];
 
     public function user(){
