@@ -17,6 +17,8 @@ Route::get('/', function () {
     return view('home');
 })->middleware('auth')->name('home');
 
-// Route::get('/laptops', function () {
-//     return view('laptops.laptops');
-// })->middleware('auth')->name('laptops');
+// Route::get('/admin', function () {
+//     $laptops = \App\Models\Laptop::latest()->get();
+//     return view('admin', compact('laptops'));
+// })->middleware('auth')->name('admin');
+
