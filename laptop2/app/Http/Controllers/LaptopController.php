@@ -47,7 +47,7 @@ class LaptopController extends Controller
 
         Laptop::create($validated);
 
-        return redirect()->route('laptops.index')
+        return redirect()->route('laptops')
                         ->with('success', 'Лаптопът е добавен успешно!');
 
         return redirect()->route('laptops')->with('success', 'Лаптопът е добавен успешно!');

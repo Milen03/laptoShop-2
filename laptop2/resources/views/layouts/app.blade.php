@@ -15,6 +15,26 @@
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+ <style>
+        /* Ensure navigation is at the top */
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+        
+        main {
+            margin-top: 64px; /* Height of navigation */
+        }
+    </style>
+    
 </head>
 <body>
     <!-- Navigation -->
