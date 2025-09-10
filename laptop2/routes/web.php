@@ -36,8 +36,3 @@ Route::get('/laptops/{laptop}', [LaptopController::class, 'show'])->name('laptop
 
 
 
-// Route::get('/admin', function () {
-//     $laptops = \App\Models\Laptop::latest()->get();
-//     return view('admin', compact('laptops'));
-// })->middleware('auth')->name('admin');
-

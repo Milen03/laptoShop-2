@@ -96,7 +96,7 @@ class LaptopController extends Controller
 
         $laptop->update($validated);
 
-        return redirect()->route('laptops.index')
+        return redirect()->route('laptops')
                         ->with('success', 'Лаптопът е обновен успешно!');
     }
 
